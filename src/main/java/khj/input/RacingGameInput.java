@@ -2,6 +2,7 @@ package khj.input;
 
 import khj.exception.CarNameLengthOverException;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class RacingGameInput {
@@ -25,5 +26,11 @@ public class RacingGameInput {
         if (carName.length() > CAR_NAME_LENGTH_MAX) {
             throw new CarNameLengthOverException();
         }
+    }
+
+    public int inputRound() throws InputMismatchException {
+        Scanner scanner = new Scanner(System.in);
+        int roundNumber = scanner.nextInt();
+        return roundNumber;
     }
 }
