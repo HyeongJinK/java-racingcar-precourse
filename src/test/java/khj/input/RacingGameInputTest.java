@@ -6,7 +6,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
+import java.util.InputMismatchException;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class RacingGameInputTest {
@@ -34,6 +36,28 @@ class RacingGameInputTest {
 
         assertThrows(CarNameLengthOverException.class, () -> {
             input.inputCarNames();
+        });
+    }
+
+    @DisplayName(value = "자동차 전진 시도 횟수를 입력받는 다.")
+    @Test
+    void inputRound() {
+        ByteArrayInputStream stream = new ByteArrayInputStream("5".getBytes());
+        System.setIn(stream);
+
+        int roundNumber = input.inputRound();
+
+        assertEquals(5, roundNumber);
+    }
+
+    @DisplayName(value = "전진 시도 횟수를 입력 받는 데 숫자가 아닌 값이 오면 예외를 리턴한다.")
+    @Test
+    void inputRoundTypeCheck() {
+        ByteArrayInputStream stream = new ByteArrayInputStream("a".getBytes());
+        System.setIn(stream);
+
+        assertThrows(InputMismatchException.class, () -> {
+            input.inputRound();
         });
     }
 }
