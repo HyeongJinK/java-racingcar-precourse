@@ -1,7 +1,6 @@
 package khj.input;
 
 import khj.exception.CarNameLengthOverException;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -22,10 +21,10 @@ class RacingGameInputTest {
 
         String[] carNames = input.inputCarNames();
 
-        Assertions.assertEquals(3, carNames.length);
-        Assertions.assertEquals("qwe", carNames[0]);
-        Assertions.assertEquals("asd", carNames[1]);
-        Assertions.assertEquals("zxc", carNames[2]);
+        assertEquals(3, carNames.length);
+        assertEquals("qwe", carNames[0]);
+        assertEquals("asd", carNames[1]);
+        assertEquals("zxc", carNames[2]);
     }
 
     @DisplayName(value = "자동차 이름이 5자를 넘어가면 예외를 리턴한다.")
