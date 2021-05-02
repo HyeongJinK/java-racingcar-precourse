@@ -22,4 +22,17 @@ public class Car {
         }
     }
 
+    public void print() {
+        String moveStr = createMoveStr();
+
+        System.out.println(name + " : " + moveStr);
+    }
+
+    private String createMoveStr() {
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < move; i++) {
+            builder.append("-");
+        }
+        return builder.toString();
+    }
 }
