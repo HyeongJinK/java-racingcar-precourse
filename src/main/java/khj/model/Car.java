@@ -17,7 +17,9 @@ public class Car {
     }
 
     public void moveAndStop(int value) {
-        if (value >= 4) {
+        final int MOVE_LIMIT = 4;
+
+        if (value >= MOVE_LIMIT) {
             ++move;
         }
     }

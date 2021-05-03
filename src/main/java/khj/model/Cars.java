@@ -17,46 +17,47 @@ public class Cars {
 
     public void roundStart() {
         Random random = new Random();
+        final int RANDOM_BOUND = 10;
 
         for (Car car: carList) {
-            car.moveAndStop(random.nextInt(10));
+            car.moveAndStop(random.nextInt(RANDOM_BOUND));
             car.print();
         }
         System.out.println("");
     }
 
     public String finishAndResult() {
-        int max = getMaxMove();
-        return getWinnersStr(max);
+        int top = getTopMove();
+        return getWinnersStr(top);
     }
 
-    private int getMaxMove() {
-        int max = 0;
+    private int getTopMove() {
+        int top = 0;
         for (Car car: carList) {
-            max = getLarge(max, car);
+            top = getLarge(top, car);
         }
-        return max;
+        return top;
     }
 
-    private int getLarge(int max, Car car) {
-        if (max < car.getMove()) {
+    private int getLarge(int top, Car car) {
+        if (top < car.getMove()) {
             return car.getMove();
         }
-        return max;
+        return top;
     }
 
-    private String getWinnersStr(int max) {
+    private String getWinnersStr(int top) {
         StringJoiner joiner = new StringJoiner(",");
 
         for (Car car: carList) {
-            addWinner(max, joiner, car);
+            addWinner(top, joiner, car);
         }
 
         return joiner.toString();
     }
 
-    private void addWinner(int max, StringJoiner joiner, Car car) {
-        if (max == car.getMove()) {
+    private void addWinner(int top, StringJoiner joiner, Car car) {
+        if (top == car.getMove()) {
             joiner.add(car.getName());
         }
     }
